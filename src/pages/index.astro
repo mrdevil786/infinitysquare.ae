@@ -3,25 +3,26 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Home, Building2, ShoppingBag, Palette } from '@lucide/astro';
 
 const services = [
   {
-    icon: '🏠',
+    icon: Home,
     title: 'Residential',
     description: 'Transform your home into a sanctuary of style and comfort.',
   },
   {
-    icon: '🏢',
+    icon: Building2,
     title: 'Commercial',
     description: 'Create inspiring workspaces that boost productivity.',
   },
   {
-    icon: '🛍️',
+    icon: ShoppingBag,
     title: 'Retail',
     description: 'Design memorable shopping experiences for your customers.',
   },
   {
-    icon: '🎨',
+    icon: Palette,
     title: '3D Visualization',
     description: 'See your vision come to life before construction begins.',
   },
@@ -106,7 +107,9 @@ const projects = [
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {services.map((service) => (
           <div class="group p-6 sm:p-8 border border-stone-200 hover:border-gold/50 hover:shadow-xl transition-all duration-500">
-            <div class="text-3xl sm:text-4xl mb-4 sm:mb-6">{service.icon}</div>
+            <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+              <service.icon class="w-6 h-6 text-white" />
+            </div>
             <h3 class="font-heading text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">{service.title}</h3>
             <p class="text-stone-600 text-sm leading-relaxed">{service.description}</p>
             <a href="/services" class="inline-flex items-center gap-2 text-gold mt-4 font-medium text-sm group-hover:gap-3 transition-all">

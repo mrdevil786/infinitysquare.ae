@@ -3,11 +3,12 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Home, Building2, ShoppingBag, Palette } from '@lucide/astro';
 
 const services = [
   {
     id: 'residential',
-    icon: '🏠',
+    icon: Home,
     title: 'Residential Interior Design',
     description: 'Transform your home into a sanctuary that reflects your personal style and enhances your daily life.',
     features: [
@@ -22,7 +23,7 @@ const services = [
   },
   {
     id: 'commercial',
-    icon: '🏢',
+    icon: Building2,
     title: 'Commercial Interior Design',
     description: 'Create workspaces that inspire productivity, foster collaboration, and leave lasting impressions.',
     features: [
@@ -37,7 +38,7 @@ const services = [
   },
   {
     id: 'retail',
-    icon: '🛍️',
+    icon: ShoppingBag,
     title: 'Retail Interior Design',
     description: 'Design memorable shopping experiences that engage customers and boost brand visibility.',
     features: [
@@ -52,7 +53,7 @@ const services = [
   },
   {
     id: 'visualization',
-    icon: '🎨',
+    icon: Palette,
     title: '3D Visualization & Rendering',
     description: 'See your vision come to life before construction begins with our state-of-the-art rendering services.',
     features: [
@@ -99,7 +100,9 @@ const process = [
       {services.map((service, index) => (
         <div id={service.id} class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
           <div class={index % 2 === 1 ? 'lg:order-2' : ''}>
-            <div class="text-4xl sm:text-5xl mb-4 sm:mb-6">{service.icon}</div>
+            <div class="w-16 h-16 gold-gradient rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+              <service.icon class="w-8 h-8 text-white" />
+            </div>
             <h2 class="font-heading text-3xl sm:text-4xl font-bold text-primary mb-3 sm:mb-4">{service.title}</h2>
             <p class="text-stone-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">{service.description}</p>
             
