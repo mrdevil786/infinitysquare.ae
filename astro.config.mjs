@@ -6,7 +6,6 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   base: '/infinitysquare.ae',
-  trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()]
   }
