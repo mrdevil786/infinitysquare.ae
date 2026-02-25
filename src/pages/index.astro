@@ -1,0 +1,243 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    icon: '🏠',
+    title: 'Residential',
+    description: 'Transform your home into a sanctuary of style and comfort.',
+  },
+  {
+    icon: '🏢',
+    title: 'Commercial',
+    description: 'Create inspiring workspaces that boost productivity.',
+  },
+  {
+    icon: '🛍️',
+    title: 'Retail',
+    description: 'Design memorable shopping experiences for your customers.',
+  },
+  {
+    icon: '🎨',
+    title: '3D Visualization',
+    description: 'See your vision come to life before construction begins.',
+  },
+];
+
+const projects = [
+  {
+    title: 'Marina Penthouse',
+    category: 'Residential',
+    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80',
+  },
+  {
+    title: 'Downtown Office',
+    category: 'Commercial',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+  },
+  {
+    title: 'Luxury Villa',
+    category: 'Residential',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+  },
+];
+---
+
+<Layout title="Home">
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative h-screen min-h-[600px] sm:min-h-[700px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80" 
+        alt="Luxury Interior" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-gold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm mb-4 sm:mb-6">Premium Interior Design</p>
+      <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-bold mb-6 sm:mb-8 leading-tight">
+        Crafting Timeless<br/>Elegant Spaces
+      </h1>
+      <p class="text-stone-300 text-base sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+        We transform visions into stunning realities, creating interiors that inspire and endure.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
+        <a 
+          href="/portfolio" 
+          class="inline-flex items-center justify-center gap-2 bg-white text-primary px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-stone-100 transition-colors"
+        >
+          View Our Work
+        </a>
+        <a 
+          href="/contact" 
+          class="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-white hover:text-primary transition-colors"
+        >
+          Start Your Project
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-5 sm:w-6 h-5 sm:h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 sm:mb-16">
+        <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">What We Do</p>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Our Services</h2>
+        <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">
+          Comprehensive interior design solutions tailored to bring your vision to life.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {services.map((service) => (
+          <div class="group p-6 sm:p-8 border border-stone-200 hover:border-gold/50 hover:shadow-xl transition-all duration-500">
+            <div class="text-3xl sm:text-4xl mb-4 sm:mb-6">{service.icon}</div>
+            <h3 class="font-heading text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">{service.title}</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">{service.description}</p>
+            <a href="/services" class="inline-flex items-center gap-2 text-gold mt-4 font-medium text-sm group-hover:gap-3 transition-all">
+              Learn More 
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-16 sm:py-24 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row justify-between items-end mb-10 sm:mb-16 gap-4">
+        <div>
+          <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Portfolio</p>
+          <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary">Featured Projects</h2>
+        </div>
+        <a href="/portfolio" class="hidden sm:inline-flex items-center gap-2 text-primary font-medium hover:text-gold transition-colors">
+          View All Projects
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {projects.map((project) => (
+          <div class="group cursor-pointer">
+            <div class="relative overflow-hidden aspect-[4/3] mb-4">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="text-white font-medium border border-white px-5 py-2">View Project</span>
+              </div>
+            </div>
+            <p class="text-gold text-xs sm:text-sm uppercase tracking-wide mb-1">{project.category}</p>
+            <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary">{project.title}</h3>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10 sm:hidden">
+        <a href="/portfolio" class="inline-flex items-center gap-2 text-primary font-medium hover:text-gold transition-colors">
+          View All Projects
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+        <div class="relative order-2 lg:order-1">
+          <img 
+            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" 
+            alt="Design Studio"
+            class="w-full"
+          />
+          <div class="absolute -bottom-4 sm:-bottom-8 -right-4 sm:-right-8 bg-primary text-white p-6 sm:p-8 hidden lg:block">
+            <p class="font-heading text-4xl sm:text-5xl font-bold">10+</p>
+            <p class="text-stone-400 text-sm">Years of Excellence</p>
+          </div>
+        </div>
+        
+        <div class="order-1 lg:order-2">
+          <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">About Us</p>
+          <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">
+            Designing Spaces That Tell Your Story
+          </h2>
+          <p class="text-stone-600 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+            At Infinity Square, we believe that exceptional interior design goes beyond aesthetics—it's about creating spaces that reflect your unique personality and enhance your lifestyle.
+          </p>
+          <p class="text-stone-600 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
+            Our team of talented designers combines creativity with functionality to transform ordinary spaces into extraordinary environments that inspire and delight.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
+            <div>
+              <p class="font-heading text-3xl sm:text-4xl font-bold text-primary">200+</p>
+              <p class="text-stone-500 text-sm">Projects Completed</p>
+            </div>
+            <div>
+              <p class="font-heading text-3xl sm:text-4xl font-bold text-primary">50+</p>
+              <p class="text-stone-500 text-sm">Happy Clients</p>
+            </div>
+          </div>
+
+          <a href="/about" class="inline-flex items-center gap-2 bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 font-medium hover:bg-stone-800 transition-colors">
+            Learn More About Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 sm:py-24 bg-primary relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"1\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </div>
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+        Ready to Transform Your Space?
+      </h2>
+      <p class="text-stone-300 text-base sm:text-lg mb-8 sm:mb-10">
+        Let's create something beautiful together. Contact us today for a consultation.
+      </p>
+      <a 
+        href="/contact" 
+        class="inline-flex items-center gap-2 gold-gradient text-white px-8 sm:px-10 py-3 sm:py-4 font-medium text-base sm:text-lg hover:opacity-90 transition-opacity"
+      >
+        Get In Touch
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

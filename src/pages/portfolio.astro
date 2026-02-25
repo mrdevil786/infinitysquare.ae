@@ -1,0 +1,191 @@
+---
+// src/pages/portfolio.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = ['All', 'Residential', 'Commercial', 'Retail', 'Hospitality'];
+
+const projects = [
+  {
+    title: 'Marina Penthouse',
+    category: 'Residential',
+    location: 'Dubai Marina',
+    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80',
+    size: 'large',
+  },
+  {
+    title: 'Downtown Office',
+    category: 'Commercial',
+    location: 'Business Bay',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+  },
+  {
+    title: 'Luxury Villa',
+    category: 'Residential',
+    location: 'Palm Jumeirah',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+  },
+  {
+    title: 'Fashion Boutique',
+    category: 'Retail',
+    location: 'Dubai Mall',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
+  },
+  {
+    title: 'Corporate HQ',
+    category: 'Commercial',
+    location: ' DIFC',
+    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80',
+  },
+  {
+    title: 'Beach Resort',
+    category: 'Hospitality',
+    location: 'Jebel Ali',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
+  },
+  {
+    title: 'Modern Apartment',
+    category: 'Residential',
+    location: 'City Walk',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+  },
+  {
+    title: 'Restaurant',
+    category: 'Retail',
+    location: 'JBR',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
+  },
+  {
+    title: 'Spa & Wellness',
+    category: 'Hospitality',
+    location: 'Abu Dhabi',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
+  },
+];
+---
+
+<Layout title="Portfolio">
+  <Header />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <p class="text-gold uppercase tracking-[0.2em] text-sm mb-4">Portfolio</p>
+        <h1 class="font-heading text-5xl md:text-6xl font-bold text-primary mb-6">
+          Our Work
+        </h1>
+        <p class="text-stone-600 text-lg leading-relaxed">
+          Explore our collection of stunning interior design projects across the UAE.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter -->
+  <section class="py-8 bg-white border-b sticky top-20 z-40">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap gap-4 justify-center">
+        {categories.map((category) => (
+          <button 
+            class={`px-6 py-2 text-sm font-medium tracking-wide uppercase transition-all ${
+              category === 'All' 
+                ? 'bg-primary text-white' 
+                : 'bg-stone-100 text-stone-600 hover:bg-primary hover:text-white'
+            }`}
+            data-category={category}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <div 
+            class="project-card group cursor-pointer" 
+            data-category={project.category}
+          >
+            <div class={`relative overflow-hidden ${project.size === 'large' ? 'md:col-span-2 aspect-[16/9]' : 'aspect-[4/3]'}`}>
+              <img 
+                src={project.image} 
+                alt={project.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div class="text-center text-white p-6">
+                  <span class="text-gold text-sm uppercase tracking-wide">{project.category}</span>
+                  <h3 class="font-heading text-2xl font-semibold mt-2">{project.title}</h3>
+                  <p class="text-stone-300 text-sm mt-1">{project.location}</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="text-gold text-sm uppercase tracking-wide">{project.category}</span>
+              <h3 class="font-heading text-xl font-semibold text-primary mt-1">{project.title}</h3>
+              <p class="text-stone-500 text-sm">{project.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-primary">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-heading text-4xl font-bold text-white mb-6">
+        Have a Project in Mind?
+      </h2>
+      <p class="text-stone-300 text-lg mb-10">
+        We'd love to hear about your vision and create something extraordinary together.
+      </p>
+      <a 
+        href="/contact" 
+        class="inline-flex items-center gap-2 gold-gradient text-white px-10 py-4 font-medium text-lg hover:opacity-90"
+      >
+        Start Your Project
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll('[data-category]');
+  const cards = document.querySelectorAll('.project-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+      
+      // Update active button
+      buttons.forEach(b => {
+        b.classList.remove('bg-primary', 'text-white');
+        b.classList.add('bg-stone-100', 'text-stone-600');
+      });
+      btn.classList.remove('bg-stone-100', 'text-stone-600');
+      btn.classList.add('bg-primary', 'text-white');
+      
+      // Filter cards
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'All' || cardCategory === category) {
+          (card as HTMLElement).style.display = 'block';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
