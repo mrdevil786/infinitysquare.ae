@@ -136,7 +136,7 @@ const showError = searchParams.get('error') === '1';
         <script>
           const form = document.getElementById('contact-form');
           const submitBtn = document.getElementById('contact-submit');
-          if (form && submitBtn) {
+          if (form && submitBtn instanceof HTMLButtonElement) {
             form.addEventListener('submit', () => {
               submitBtn.disabled = true;
               submitBtn.textContent = 'Sending…';

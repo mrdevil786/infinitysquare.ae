@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { Home, Building2, ShoppingBag, Palette } from '@lucide/astro';
+import { House, Building2, ShoppingBag, Palette } from '@lucide/astro';
 import { servicesData } from '../data/services';
 import { projects as allProjects, featuredProjectsCount } from '../data/portfolio';
 
-const iconMap = { Home, Building2, ShoppingBag, Palette } as const;
+const iconMap = { House, Building2, ShoppingBag, Palette } as const;
 const services = servicesData.map((s) => ({
   icon: iconMap[s.iconKey],
   title: s.title.replace(/ Interior Design| & Rendering/g, ''),
