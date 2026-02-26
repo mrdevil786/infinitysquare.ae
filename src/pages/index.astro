@@ -23,7 +23,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
 
 <Layout title="Home" preloadImage={heroImageUrl}>
   <Header />
-  
+  <main id="main-content">
   <!-- Hero Section -->
   <section class="relative h-screen min-h-[600px] sm:min-h-[700px] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
@@ -62,15 +62,15 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-5 sm:w-6 h-5 sm:h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <a href="#our-services" class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/60 hover:text-white transition-colors" aria-label="Scroll to services">
+      <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
-    </div>
+    </a>
   </section>
 
   <!-- Services Section -->
-  <section class="py-16 sm:py-24 bg-white">
+  <section id="our-services" class="py-16 sm:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12 sm:mb-16">
         <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">What We Do</p>
@@ -118,7 +118,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {projects.map((project) => (
-          <div class="group cursor-pointer">
+          <a href="/portfolio" class="group block cursor-pointer">
             <div class="relative overflow-hidden aspect-[4/3] rounded-2xl mb-4">
               <img 
                 src={project.image} 
@@ -134,7 +134,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
             </div>
             <p class="text-gold text-xs sm:text-sm uppercase tracking-wide mb-1">{project.category}</p>
             <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary">{project.title}</h3>
-          </div>
+          </a>
         ))}
       </div>
 
@@ -224,5 +224,6 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
     </div>
   </section>
 
+  </main>
   <Footer />
 </Layout>

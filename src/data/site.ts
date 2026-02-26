@@ -33,7 +33,7 @@ export const navLinks: NavLink[] = [
 /** Contact details used on Contact page and Footer. */
 export const contactInfo: ContactInfo = {
   address: {
-    studioName: 'Infinity Square Design Studio',
+    studioName: 'Infinity Square LLC Design Studio',
     street: 'Sheikh Zayed Road',
     city: 'Dubai, United Arab Emirates',
   },

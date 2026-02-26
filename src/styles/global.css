@@ -50,9 +50,30 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Keyboard focus ring: visible only on focus-visible (e.g. Tab), not on mouse click */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-stone-50;
+  }
+}
+
 /* Gold accent gradient */
 .gold-gradient {
   background: linear-gradient(135deg, #d4a574 0%, #b45309 100%);
+}
+
+/* CTA button patterns for consistency */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 text-white px-8 sm:px-10 py-3 sm:py-4 font-medium text-base sm:text-lg rounded-lg hover:opacity-90 transition-opacity;
+  background: linear-gradient(135deg, #d4a574 0%, #b45309 100%);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 font-medium rounded-lg hover:bg-white hover:text-primary transition-colors;
 }
 
 /* Parallax hero: fixed only on desktop to avoid mobile jank */
@@ -74,4 +95,29 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Mobile menu slide-down animation */
+.mobile-menu {
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition:
+    max-height 0.25s ease-out,
+    opacity 0.2s ease-out;
+}
+
+.mobile-menu.mobile-menu-open {
+  max-height: 20rem;
+  opacity: 1;
+  transition:
+    max-height 0.3s ease-in,
+    opacity 0.25s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .mobile-menu.mobile-menu-open {
+    transition: none;
+  }
 }

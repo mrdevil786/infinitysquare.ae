@@ -3,11 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { contactInfo } from '../data/site';
+
+const searchParams = Astro.url.searchParams;
+const showSuccess = searchParams.get('sent') === '1';
+const showError = searchParams.get('error') === '1';
 ---
 
 <Layout title="Contact Us">
   <Header />
-
+  <main id="main-content">
   <!-- Hero -->
   <section class="pt-28 sm:pt-32 pb-12 sm:pb-16 bg-stone-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -30,8 +34,20 @@ import { contactInfo } from '../data/site';
         <!-- Contact Form -->
         <div>
           <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8">Send us a Message</h2>
+
+          {showSuccess && (
+            <div class="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm sm:text-base" role="status">
+              Thank you. Your message has been sent. We'll get back to you soon.
+            </div>
+          )}
+          {showError && (
+            <div class="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm sm:text-base" role="alert">
+              Something went wrong. Please try again or email us directly.
+            </div>
+          )}
           
           <form
+            id="contact-form"
             name="contact"
             method="POST"
             action="/contact"
@@ -109,12 +125,24 @@ import { contactInfo } from '../data/site';
 
             <button 
               type="submit" 
-              class="w-full gold-gradient text-white py-3 sm:py-4 font-medium text-base sm:text-lg rounded-lg hover:opacity-90 transition-opacity"
+              id="contact-submit"
+              class="w-full gold-gradient text-white py-3 sm:py-4 font-medium text-base sm:text-lg rounded-lg hover:opacity-90 transition-opacity disabled:opacity-70 disabled:cursor-not-allowed"
             >
               Send Message
             </button>
           </form>
         </div>
+
+        <script>
+          const form = document.getElementById('contact-form');
+          const submitBtn = document.getElementById('contact-submit');
+          if (form && submitBtn) {
+            form.addEventListener('submit', () => {
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Sending…';
+            });
+          }
+        </script>
 
         <!-- Contact Info -->
         <div class="lg:pl-8 xl:pl-16">
@@ -184,5 +212,6 @@ import { contactInfo } from '../data/site';
     </div>
   </section>
 
+  </main>
   <Footer />
 </Layout>

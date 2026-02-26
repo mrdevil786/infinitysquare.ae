@@ -7,7 +7,7 @@ import { categories, projects } from '../data/portfolio';
 
 <Layout title="Portfolio">
   <Header />
-
+  <main id="main-content">
   <!-- Hero -->
   <section class="pt-32 pb-16 bg-stone-50">
     <div class="max-w-7xl mx-auto px-6">
@@ -24,17 +24,19 @@ import { categories, projects } from '../data/portfolio';
   </section>
 
   <!-- Filter -->
-  <section class="py-6 bg-white border-b sticky top-16 z-30">
+  <section class="py-6 bg-white border-b sticky z-30" style="top: var(--header-height);" role="group" aria-label="Filter by category">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-wrap gap-4 justify-center">
         {categories.map((category) => (
           <button 
+            type="button"
             class={`px-6 py-2 text-sm font-medium tracking-wide uppercase transition-all rounded-lg ${
               category === 'All' 
                 ? 'bg-primary text-white' 
                 : 'bg-stone-100 text-stone-600 hover:bg-primary hover:text-white'
             }`}
             data-category={category}
+            aria-pressed={category === 'All'}
           >
             {category}
           </button>
@@ -101,6 +103,7 @@ import { categories, projects } from '../data/portfolio';
     </div>
   </section>
 
+  </main>
   <Footer />
 </Layout>
 
@@ -112,13 +115,15 @@ import { categories, projects } from '../data/portfolio';
     btn.addEventListener('click', () => {
       const category = btn.getAttribute('data-category');
       
-      // Update active button
-      buttons.forEach(b => {
+      // Update active button and aria-pressed
+      buttons.forEach((b) => {
         b.classList.remove('bg-primary', 'text-white');
         b.classList.add('bg-stone-100', 'text-stone-600');
+        b.setAttribute('aria-pressed', 'false');
       });
       btn.classList.remove('bg-stone-100', 'text-stone-600');
       btn.classList.add('bg-primary', 'text-white');
+      btn.setAttribute('aria-pressed', 'true');
       
       // Filter cards
       cards.forEach(card => {
