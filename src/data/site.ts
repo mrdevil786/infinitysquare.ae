@@ -1,5 +1,5 @@
 /**
- * Centralized site data for Infinity Square AE.
+ * Centralized site data for Infinity Square LLC AE.
  * Single source of truth for navigation, footer, and contact information.
  */
 
