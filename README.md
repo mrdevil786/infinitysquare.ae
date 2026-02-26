@@ -1,4 +1,4 @@
-# Infinity Square LLC AE
+# Infinity Square LLC
 
 Marketing website for Infinity Square LLC, a premium interior design studio crafting timeless, elegant spaces across the UAE.
 

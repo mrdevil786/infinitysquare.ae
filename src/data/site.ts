@@ -1,5 +1,5 @@
 /**
- * Centralized site data for Infinity Square LLC AE.
+ * Centralized site data for Infinity Square LLC.
  * Single source of truth for navigation, footer, and contact information.
  */
 
@@ -33,7 +33,7 @@ export const navLinks: NavLink[] = [
 /** Contact details used on Contact page and Footer. */
 export const contactInfo: ContactInfo = {
   address: {
-    studioName: 'Infinity Square LLC Design Studio',
+    studioName: 'Infinity Square LLC',
     street: 'Sheikh Zayed Road',
     city: 'Dubai, United Arab Emirates',
   },
