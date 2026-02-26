@@ -27,14 +27,14 @@ const team = [
   <Header />
   <main id="main-content">
   <!-- Hero -->
-  <section class="pt-28 sm:pt-32 pb-12 sm:pb-16 bg-stone-50">
+  <section class="pt-28 sm:pt-32 pb-12 sm:pb-16 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="max-w-3xl">
-        <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">About Us</p>
+        <p class="text-gold font-medium uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">About Us</p>
         <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-primary mb-4 sm:mb-6">
           A Passion for Timeless Design
         </h1>
-        <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+        <p class="text-zinc-600 text-base sm:text-lg leading-relaxed">
           Founded in Dubai, Infinity Square LLC has been transforming spaces across the UAE for over a decade. We combine Eastern elegance with Western innovation to create interiors that are both culturally resonant and globally inspired.
         </p>
       </div>
@@ -46,8 +46,8 @@ const team = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
         <div>
-          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-primary mb-4 sm:mb-6">Our Story</h2>
-          <div class="space-y-4 text-stone-600 leading-relaxed text-sm sm:text-base">
+          <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-4 sm:mb-6">Our Story</h2>
+          <div class="space-y-4 text-zinc-600 leading-relaxed text-sm sm:text-base">
             <p>
               Infinity Square LLC was born from a simple belief: everyone deserves to live and work in spaces that inspire them. Founded in 2014 by a team of passionate designers, we set out to transform the interior design landscape in the UAE.
             </p>
@@ -66,7 +66,7 @@ const team = [
             width={800}
             height={600}
             loading="lazy"
-            class="w-full"
+            class="w-full rounded-2xl shadow-lg"
           />
         </div>
       </div>
@@ -74,42 +74,42 @@ const team = [
   </section>
 
   <!-- Values -->
-  <section class="py-12 sm:py-24 bg-stone-50">
+  <section class="py-12 sm:py-24 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-10 sm:mb-16">
-        <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Philosophy</p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-primary">What We Stand For</h2>
+        <p class="text-gold font-medium uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Philosophy</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-primary">What We Stand For</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        <div class="bg-white p-8 sm:p-10 text-center">
-          <div class="w-14 sm:w-16 h-14 sm:h-16 gold-gradient rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6">
+        <div class="card-modern p-8 sm:p-10 text-center">
+          <div class="w-14 sm:w-16 h-14 sm:h-16 gold-gradient rounded-xl flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-sm">
             <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
             </svg>
           </div>
-          <h3 class="font-heading text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">Innovation</h3>
-          <p class="text-stone-600 text-sm sm:text-base">We embrace new technologies and design approaches to deliver spaces that are ahead of their time.</p>
+          <h3 class="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">Innovation</h3>
+          <p class="text-zinc-600 text-sm sm:text-base">We embrace new technologies and design approaches to deliver spaces that are ahead of their time.</p>
         </div>
 
-        <div class="bg-white p-8 sm:p-10 text-center">
-          <div class="w-14 sm:w-16 h-14 sm:h-16 gold-gradient rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6">
+        <div class="card-modern p-8 sm:p-10 text-center">
+          <div class="w-14 sm:w-16 h-14 sm:h-16 gold-gradient rounded-xl flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-sm">
             <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
-          <h3 class="font-heading text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">Craftsmanship</h3>
-          <p class="text-stone-600 text-sm sm:text-base">Every detail matters. We work with the finest materials and skilled artisans to ensure exceptional quality.</p>
+          <h3 class="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">Craftsmanship</h3>
+          <p class="text-zinc-600 text-sm sm:text-base">Every detail matters. We work with the finest materials and skilled artisans to ensure exceptional quality.</p>
         </div>
 
-        <div class="bg-white p-8 sm:p-10 text-center sm:col-span-2 lg:col-span-1">
-          <div class="w-14 sm:w-16 h-14 sm:h-16 gold-gradient rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6">
+        <div class="card-modern p-8 sm:p-10 text-center sm:col-span-2 lg:col-span-1">
+          <div class="w-14 sm:w-16 h-14 sm:h-16 gold-gradient rounded-xl flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-sm">
             <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
           </div>
-          <h3 class="font-heading text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">Sustainability</h3>
-          <p class="text-stone-600 text-sm sm:text-base">We're committed to eco-conscious design, sourcing sustainable materials and minimizing environmental impact.</p>
+          <h3 class="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">Sustainability</h3>
+          <p class="text-zinc-600 text-sm sm:text-base">We're committed to eco-conscious design, sourcing sustainable materials and minimizing environmental impact.</p>
         </div>
       </div>
     </div>
@@ -119,14 +119,14 @@ const team = [
   <section class="py-12 sm:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-10 sm:mb-16">
-        <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Team</p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-primary">Meet the Designers</h2>
+        <p class="text-gold font-medium uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Team</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-primary">Meet the Designers</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {team.map((member) => (
           <div class="group">
-            <div class="relative overflow-hidden aspect-square mb-4 sm:mb-6 rounded-2xl">
+            <div class="relative overflow-hidden aspect-square mb-4 sm:mb-6 rounded-2xl shadow-md group-hover:shadow-xl transition-shadow duration-300">
               <img 
                 src={member.image} 
                 alt={member.name}
@@ -136,8 +136,8 @@ const team = [
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary">{member.name}</h3>
-            <p class="text-gold text-sm">{member.role}</p>
+            <h3 class="text-lg sm:text-xl font-semibold text-primary">{member.name}</h3>
+            <p class="text-gold text-sm font-medium">{member.role}</p>
           </div>
         ))}
       </div>
@@ -149,20 +149,20 @@ const team = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
         <div>
-          <p class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2">10+</p>
-          <p class="text-stone-400 text-sm sm:text-base">Years Experience</p>
+          <p class="text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2 tracking-tight">10+</p>
+          <p class="text-zinc-400 text-sm sm:text-base">Years Experience</p>
         </div>
         <div>
-          <p class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2">200+</p>
-          <p class="text-stone-400 text-sm sm:text-base">Projects Completed</p>
+          <p class="text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2 tracking-tight">200+</p>
+          <p class="text-zinc-400 text-sm sm:text-base">Projects Completed</p>
         </div>
         <div>
-          <p class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2">50+</p>
-          <p class="text-stone-400 text-sm sm:text-base">Awards Won</p>
+          <p class="text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2 tracking-tight">50+</p>
+          <p class="text-zinc-400 text-sm sm:text-base">Awards Won</p>
         </div>
         <div>
-          <p class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2">100%</p>
-          <p class="text-stone-400 text-sm sm:text-base">Client Satisfaction</p>
+          <p class="text-4xl sm:text-5xl md:text-6xl font-bold text-gold mb-1 sm:mb-2 tracking-tight">100%</p>
+          <p class="text-zinc-400 text-sm sm:text-base">Client Satisfaction</p>
         </div>
       </div>
     </div>
