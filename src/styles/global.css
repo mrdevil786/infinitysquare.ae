@@ -1,15 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1c1917;
-  --color-secondary: #78716c;
+  --color-primary: #0f0f0f;
+  --color-secondary: #52525b;
   --color-accent: #b45309;
-  --color-gold: #d4a574;
+  --color-gold: #c9a227;
+  --color-gold-soft: #d4af37;
   --color-cream: #fafaf9;
-  --color-stone-light: #f5f5f4;
+  --color-stone-light: #f4f4f5;
   
   --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
+  
+  --radius-card: 1rem;
+  --radius-button: 0.75rem;
+  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-card-hover: 0 20px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.04);
 }
 
 /* Custom utilities */
@@ -25,6 +32,16 @@
   .font-body {
     font-family: var(--font-body);
   }
+  
+  .card-modern {
+    @apply bg-white rounded-2xl border border-zinc-100 shadow-sm transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-modern:hover {
+    box-shadow: var(--shadow-card-hover);
+    @apply border-gold/20;
+  }
 }
 
 /* Base styles */
@@ -38,32 +55,64 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* Modern mix: serif for hero H1 only, sans for all other headings */
+h1 {
   font-family: var(--font-heading);
+  @apply tracking-tight;
 }
 
-/* Smooth animations */
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  @apply font-semibold tracking-tight text-primary;
+}
+
+/* Smooth animations for interactive elements only */
 @layer base {
-  * {
-    @apply transition-colors duration-300;
-  }
-  
-  a, button {
+  a,
+  button {
     @apply transition-all duration-300;
   }
 }
 
-/* Gold accent gradient */
-.gold-gradient {
-  background: linear-gradient(135deg, #d4a574 0%, #b45309 100%);
+/* Keyboard focus ring: visible only on focus-visible (e.g. Tab), not on mouse click */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-stone-50;
+  }
 }
 
-/* Parallax hero */
+/* Gold accent gradient – modern luxury */
+.gold-gradient {
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #996515 100%);
+  box-shadow: 0 2px 8px -2px rgb(184 134 11 / 0.35);
+}
+
+/* CTA button patterns – modern luxury */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 text-white font-semibold text-base sm:text-lg rounded-xl px-8 sm:px-10 py-3.5 sm:py-4 transition-all duration-300 hover:opacity-95 hover:scale-[1.02] active:scale-[0.98];
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #996515 100%);
+  box-shadow: 0 4px 14px -3px rgb(184 134 11 / 0.4);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white font-semibold rounded-xl px-6 sm:px-8 py-3.5 sm:py-4 transition-all duration-300 hover:bg-white hover:text-primary hover:shadow-lg;
+}
+
+/* Parallax hero: fixed only on desktop to avoid mobile jank */
 .hero-parallax {
-  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media (min-width: 1024px) {
+  .hero-parallax {
+    background-attachment: fixed;
+  }
 }
 
 /* Text gradient */
@@ -72,4 +121,29 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Mobile menu slide-down animation */
+.mobile-menu {
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition:
+    max-height 0.25s ease-out,
+    opacity 0.2s ease-out;
+}
+
+.mobile-menu.mobile-menu-open {
+  max-height: 20rem;
+  opacity: 1;
+  transition:
+    max-height 0.3s ease-in,
+    opacity 0.25s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .mobile-menu.mobile-menu-open {
+    transition: none;
+  }
 }

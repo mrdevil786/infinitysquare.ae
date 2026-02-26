@@ -1,93 +1,26 @@
 ---
-// src/pages/services.astro
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Home, Building2, ShoppingBag, Palette } from '@lucide/astro';
+import { servicesData, processSteps } from '../data/services';
 
-const services = [
-  {
-    id: 'residential',
-    icon: Home,
-    title: 'Residential Interior Design',
-    description: 'Transform your home into a sanctuary that reflects your personal style and enhances your daily life.',
-    features: [
-      'Luxury Villa Design',
-      'Apartment Renovation',
-      'Penthouse Interiors',
-      'Kitchen & Bathroom Design',
-      'Bedroom & Living Spaces',
-      'Home Office Solutions',
-    ],
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80',
-  },
-  {
-    id: 'commercial',
-    icon: Building2,
-    title: 'Commercial Interior Design',
-    description: 'Create workspaces that inspire productivity, foster collaboration, and leave lasting impressions.',
-    features: [
-      'Office Space Design',
-      'Corporate Headquarters',
-      'Coworking Spaces',
-      'Conference Rooms',
-      'Reception Areas',
-      'Workspace Optimization',
-    ],
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
-  },
-  {
-    id: 'retail',
-    icon: ShoppingBag,
-    title: 'Retail Interior Design',
-    description: 'Design memorable shopping experiences that engage customers and boost brand visibility.',
-    features: [
-      'Store Design',
-      'Showroom Interiors',
-      'Shopping Mall Units',
-      'Brand Visualization',
-      'Display Systems',
-      'Customer Flow Optimization',
-    ],
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
-  },
-  {
-    id: 'visualization',
-    icon: Palette,
-    title: '3D Visualization & Rendering',
-    description: 'See your vision come to life before construction begins with our state-of-the-art rendering services.',
-    features: [
-      'Photo-Realistic Renderings',
-      'Virtual Tours',
-      '360° Panoramas',
-      'Animation Walkthroughs',
-      'Material Selection',
-      'Lighting Design',
-    ],
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
-  },
-];
-
-const process = [
-  { step: '01', title: 'Consultation', description: 'We discuss your vision, requirements, and budget to understand your needs.' },
-  { step: '02', title: 'Design', description: 'Our team creates detailed designs and 3D visualizations for your approval.' },
-  { step: '03', title: 'Execution', description: 'We manage the entire project, from procurement to installation.' },
-  { step: '04', title: 'Delivery', description: 'Your transformed space is ready for you to enjoy.' },
-];
+const iconMap = { Home, Building2, ShoppingBag, Palette } as const;
+const services = servicesData.map((s) => ({ ...s, icon: iconMap[s.iconKey] }));
 ---
 
 <Layout title="Services">
   <Header />
-
+  <main id="main-content">
   <!-- Hero -->
-  <section class="pt-28 sm:pt-32 pb-12 sm:pb-16 bg-stone-50">
+  <section class="pt-28 sm:pt-32 pb-12 sm:pb-16 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="max-w-3xl">
-        <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Services</p>
+        <p class="text-gold font-medium uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Services</p>
         <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-primary mb-4 sm:mb-6">
           Comprehensive Design Solutions
         </h1>
-        <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+        <p class="text-zinc-600 text-base sm:text-lg leading-relaxed">
           From concept to completion, we offer end-to-end interior design services tailored to your unique needs.
         </p>
       </div>
@@ -100,16 +33,16 @@ const process = [
       {services.map((service, index) => (
         <div id={service.id} class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
           <div class={index % 2 === 1 ? 'lg:order-2' : ''}>
-            <div class="w-16 h-16 gold-gradient rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+            <div class="w-16 h-16 gold-gradient rounded-xl flex items-center justify-center mb-4 sm:mb-6 shadow-sm">
               <service.icon class="w-8 h-8 text-white" />
             </div>
-            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-primary mb-3 sm:mb-4">{service.title}</h2>
-            <p class="text-stone-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">{service.description}</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-3 sm:mb-4">{service.title}</h2>
+            <p class="text-zinc-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">{service.description}</p>
             
-            <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary mb-3 sm:mb-4">What's Included</h3>
+            <h3 class="text-lg sm:text-xl font-semibold text-primary mb-3 sm:mb-4">What's Included</h3>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               {service.features.map((feature) => (
-                <li class="flex items-center gap-2 sm:gap-3 text-stone-600 text-sm sm:text-base">
+                <li class="flex items-center gap-2 sm:gap-3 text-zinc-600 text-sm sm:text-base">
                   <svg class="w-4 sm:w-5 h-4 sm:h-5 text-gold flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                   </svg>
@@ -123,6 +56,9 @@ const process = [
             <img 
               src={service.image} 
               alt={service.title}
+              width={800}
+              height={600}
+              loading="lazy"
               class="w-full shadow-2xl rounded-2xl"
             />
           </div>
@@ -132,21 +68,21 @@ const process = [
   </section>
 
   <!-- Process -->
-  <section class="py-12 sm:py-24 bg-stone-50">
+  <section class="py-12 sm:py-24 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-10 sm:mb-16">
-        <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Process</p>
-        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-primary">How We Work</h2>
+        <p class="text-gold font-medium uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Our Process</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-primary">How We Work</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-        {process.map((step, index) => (
+        {processSteps.map((step, index) => (
           <div class="relative">
-            <div class="text-5xl sm:text-6xl font-heading font-bold text-stone-200 mb-3 sm:mb-4">{step.step}</div>
-            <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary mb-2">{step.title}</h3>
-            <p class="text-stone-600 text-sm sm:text-base">{step.description}</p>
-            {index < process.length - 1 && (
-              <div class="hidden sm:block absolute top-8 -right-3 lg:right-0 xl:-right-4 text-stone-300">
+            <div class="text-5xl sm:text-6xl font-bold text-zinc-200 mb-3 sm:mb-4 tracking-tight">{step.step}</div>
+            <h3 class="text-lg sm:text-xl font-semibold text-primary mb-2">{step.title}</h3>
+            <p class="text-zinc-600 text-sm sm:text-base">{step.description}</p>
+            {index < processSteps.length - 1 && (
+              <div class="hidden sm:block absolute top-8 -right-3 lg:right-0 xl:-right-4 text-zinc-300">
                 <svg class="w-6 sm:w-8 h-6 sm:h-8" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                 </svg>
@@ -161,15 +97,15 @@ const process = [
   <!-- CTA -->
   <section class="py-12 sm:py-24 bg-primary">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
         Ready to Start Your Project?
       </h2>
-      <p class="text-stone-300 text-base sm:text-lg mb-8 sm:mb-10">
+      <p class="text-zinc-400 text-base sm:text-lg mb-8 sm:mb-10">
         Let's discuss how we can bring your vision to life.
       </p>
       <a 
         href="/contact" 
-        class="inline-flex items-center gap-2 gold-gradient text-white px-8 sm:px-10 py-3 sm:py-4 font-medium text-base sm:text-lg hover:opacity-90 transition-opacity"
+        class="btn-primary inline-flex items-center gap-2"
       >
         Get In Touch
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,5 +115,6 @@ const process = [
     </div>
   </section>
 
+  </main>
   <Footer />
 </Layout>
