@@ -3,7 +3,7 @@
  * Icons are referenced by key; pages map keys to Lucide components for tree-shaking.
  */
 
-export type ServiceIconKey = 'Home' | 'Building2' | 'ShoppingBag' | 'Palette';
+export type ServiceIconKey = 'House' | 'Building2' | 'ShoppingBag' | 'Palette';
 
 export interface ServiceEntry {
   id: string;
@@ -20,7 +20,7 @@ export interface ServiceEntry {
 export const servicesData: ServiceEntry[] = [
   {
     id: 'residential',
-    iconKey: 'Home',
+    iconKey: 'House',
     title: 'Residential Interior Design',
     shortDescription: 'Transform your home into a sanctuary of style and comfort.',
     description:
