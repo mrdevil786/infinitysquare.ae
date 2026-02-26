@@ -1,6 +1,6 @@
-# Infinity Square AE
+# Infinity Square LLC AE
 
-Marketing website for Infinity Square, a premium interior design studio crafting timeless, elegant spaces across the UAE.
+Marketing website for Infinity Square LLC, a premium interior design studio crafting timeless, elegant spaces across the UAE.
 
 ## Tech stack
 
