@@ -94,13 +94,19 @@ import { navLinks } from '../data/site';
     });
   });
 
-  // Header scroll effect
+  // Header scroll effect (throttled with rAF)
+  let scrollScheduled = false;
   window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > 50) {
-      header?.classList.add('shadow-md');
-    } else {
-      header?.classList.remove('shadow-md');
-    }
+    if (scrollScheduled) return;
+    scrollScheduled = true;
+    requestAnimationFrame(() => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 50) {
+        header?.classList.add('shadow-md');
+      } else {
+        header?.classList.remove('shadow-md');
+      }
+      scrollScheduled = false;
+    });
   });
 </script>

@@ -42,13 +42,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-/* Smooth animations */
+/* Smooth animations for interactive elements only */
 @layer base {
-  * {
-    @apply transition-colors duration-300;
-  }
-  
-  a, button {
+  a,
+  button {
     @apply transition-all duration-300;
   }
 }
@@ -58,12 +55,17 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(135deg, #d4a574 0%, #b45309 100%);
 }
 
-/* Parallax hero */
+/* Parallax hero: fixed only on desktop to avoid mobile jank */
 .hero-parallax {
-  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media (min-width: 1024px) {
+  .hero-parallax {
+    background-attachment: fixed;
+  }
 }
 
 /* Text gradient */

@@ -1,68 +1,8 @@
 ---
-// src/pages/portfolio.astro
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-
-const categories = ['All', 'Residential', 'Commercial', 'Retail', 'Hospitality'];
-
-const projects = [
-  {
-    title: 'Marina Penthouse',
-    category: 'Residential',
-    location: 'Dubai Marina',
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80',
-    size: 'large',
-  },
-  {
-    title: 'Downtown Office',
-    category: 'Commercial',
-    location: 'Business Bay',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
-  },
-  {
-    title: 'Luxury Villa',
-    category: 'Residential',
-    location: 'Palm Jumeirah',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-  },
-  {
-    title: 'Fashion Boutique',
-    category: 'Retail',
-    location: 'Dubai Mall',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
-  },
-  {
-    title: 'Corporate HQ',
-    category: 'Commercial',
-    location: ' DIFC',
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80',
-  },
-  {
-    title: 'Beach Resort',
-    category: 'Hospitality',
-    location: 'Jebel Ali',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
-  },
-  {
-    title: 'Modern Apartment',
-    category: 'Residential',
-    location: 'City Walk',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
-  },
-  {
-    title: 'Restaurant',
-    category: 'Retail',
-    location: 'JBR',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
-  },
-  {
-    title: 'Spa & Wellness',
-    category: 'Hospitality',
-    location: 'Abu Dhabi',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
-  },
-];
+import { categories, projects } from '../data/portfolio';
 ---
 
 <Layout title="Portfolio">
@@ -116,6 +56,9 @@ const projects = [
               <img 
                 src={project.image} 
                 alt={project.title}
+                width={project.size === 'large' ? 800 : 800}
+                height={project.size === 'large' ? 450 : 600}
+                loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
