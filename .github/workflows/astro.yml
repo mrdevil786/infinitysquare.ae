@@ -67,13 +67,13 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
       - name: Lint
-        run: ${{ steps.detect-package-manager.outputs.runner }} run lint
+        run: ${{ steps.detect-package-manager.outputs.manager }} run lint
         working-directory: ${{ env.BUILD_PATH }}
       - name: Astro check
         run: ${{ steps.detect-package-manager.outputs.runner }} astro check
         working-directory: ${{ env.BUILD_PATH }}
       - name: Test
-        run: ${{ steps.detect-package-manager.outputs.runner }} run test
+        run: ${{ steps.detect-package-manager.outputs.manager }} run test
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
