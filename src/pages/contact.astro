@@ -1,8 +1,8 @@
 ---
-// src/pages/contact.astro
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { contactInfo } from '../data/site';
 ---
 
 <Layout title="Contact Us">
@@ -31,22 +31,36 @@ import Footer from '../components/Footer.astro';
         <div>
           <h2 class="font-heading text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8">Send us a Message</h2>
           
-          <form name="contact" method="POST" data-netlify="true" class="space-y-5 sm:space-y-6">
+          <form
+            name="contact"
+            method="POST"
+            action="/contact"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="space-y-5 sm:space-y-6"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden" aria-hidden="true">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label for="name" class="block text-stone-600 text-sm font-medium mb-2">Your Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
                   class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:border-gold focus:outline-none transition-colors"
                   placeholder="John Doe"
                 />
               </div>
               <div>
                 <label for="phone" class="block text-stone-600 text-sm font-medium mb-2">Phone Number</label>
-                <input 
-                  type="tel" 
-                  id="phone" 
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
                   class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:border-gold focus:outline-none transition-colors"
                   placeholder="+971 50 123 4567"
                 />
@@ -55,9 +69,11 @@ import Footer from '../components/Footer.astro';
 
             <div>
               <label for="email" class="block text-stone-600 text-sm font-medium mb-2">Email Address</label>
-              <input 
-                type="email" 
-                id="email" 
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
                 class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:border-gold focus:outline-none transition-colors"
                 placeholder="john@example.com"
               />
@@ -65,8 +81,9 @@ import Footer from '../components/Footer.astro';
 
             <div>
               <label for="service" class="block text-stone-600 text-sm font-medium mb-2">Service Interested In</label>
-              <select 
-                id="service" 
+              <select
+                id="service"
+                name="service"
                 class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:border-gold focus:outline-none transition-colors bg-white"
               >
                 <option value="">Select a service</option>
@@ -80,9 +97,11 @@ import Footer from '../components/Footer.astro';
 
             <div>
               <label for="message" class="block text-stone-600 text-sm font-medium mb-2">Your Message</label>
-              <textarea 
-                id="message" 
-                rows="5" 
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
                 class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:border-gold focus:outline-none transition-colors resize-none"
                 placeholder="Tell us about your project..."
               ></textarea>
@@ -112,9 +131,9 @@ import Footer from '../components/Footer.astro';
               <div>
                 <h3 class="font-heading text-lg font-semibold text-primary mb-1">Visit Our Studio</h3>
                 <p class="text-stone-600 text-sm sm:text-base">
-                  Infinity Square Design Studio<br/>
-                  Sheikh Zayed Road<br/>
-                  Dubai, United Arab Emirates
+                  {contactInfo.address.studioName}<br/>
+                  {contactInfo.address.street}<br/>
+                  {contactInfo.address.city}
                 </p>
               </div>
             </div>
@@ -127,10 +146,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <div>
                 <h3 class="font-heading text-lg font-semibold text-primary mb-1">Email Us</h3>
-                <p class="text-stone-600 text-sm sm:text-base">
-                  hello@infinitysquare.ae<br/>
-                  projects@infinitysquare.ae
-                </p>
+                <p class="text-stone-600 text-sm sm:text-base" set:html={contactInfo.emails.join('<br/>')} />
               </div>
             </div>
 
@@ -142,10 +158,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <div>
                 <h3 class="font-heading text-lg font-semibold text-primary mb-1">Call Us</h3>
-                <p class="text-stone-600 text-sm sm:text-base">
-                  +971 4 123 4567<br/>
-                  +971 50 987 6543
-                </p>
+                <p class="text-stone-600 text-sm sm:text-base" set:html={contactInfo.phones.join('<br/>')} />
               </div>
             </div>
 
@@ -157,10 +170,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <div>
                 <h3 class="font-heading text-lg font-semibold text-primary mb-1">Office Hours</h3>
-                <p class="text-stone-600 text-sm sm:text-base">
-                  Sunday - Thursday: 9:00 AM - 7:00 PM<br/>
-                  Friday - Saturday: Closed
-                </p>
+                <p class="text-stone-600 text-sm sm:text-base" set:html={contactInfo.officeHours.replace(/\n/g, '<br/>')} />
               </div>
             </div>
           </div>
