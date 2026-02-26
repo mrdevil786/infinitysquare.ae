@@ -37,8 +37,8 @@ export const contactInfo: ContactInfo = {
     street: 'Sheikh Zayed Road',
     city: 'Dubai, United Arab Emirates',
   },
-  emails: ['hello@infinitysquare.ae', 'projects@infinitysquare.ae'],
-  phones: ['+971 4 123 4567', '+971 50 987 6543'],
+  emails: ['info@infinityaquare.ae'],
+  phones: ['+971 56 610 0395'],
   officeHours: 'Sunday - Thursday: 9:00 AM - 7:00 PM\nFriday - Saturday: Closed',
 };
 
