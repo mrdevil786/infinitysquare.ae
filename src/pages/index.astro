@@ -70,25 +70,25 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
   </section>
 
   <!-- Services Section -->
-  <section id="our-services" class="py-16 sm:py-24 bg-white">
+  <section id="our-services" class="py-16 sm:py-24 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12 sm:mb-16">
-        <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">What We Do</p>
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Our Services</h2>
-        <p class="text-stone-600 max-w-xl mx-auto text-sm sm:text-base">
+        <p class="text-gold font-medium tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4 uppercase">What We Do</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Our Services</h2>
+        <p class="text-zinc-600 max-w-xl mx-auto text-sm sm:text-base">
           Comprehensive interior design solutions tailored to bring your vision to life.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {services.map((service) => (
-          <div class="group p-6 sm:p-8 border border-stone-200 rounded-2xl hover:border-gold/50 hover:shadow-xl transition-all duration-500">
-            <div class="w-12 h-12 gold-gradient rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+          <div class="group card-modern p-6 sm:p-8">
+            <div class="w-12 h-12 gold-gradient rounded-xl flex items-center justify-center mb-4 sm:mb-6 shadow-sm">
               <service.icon class="w-6 h-6 text-white" />
             </div>
-            <h3 class="font-heading text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">{service.title}</h3>
-            <p class="text-stone-600 text-sm leading-relaxed">{service.description}</p>
-            <a href="/services" class="inline-flex items-center gap-2 text-gold mt-4 font-medium text-sm group-hover:gap-3 transition-all">
+            <h3 class="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-3">{service.title}</h3>
+            <p class="text-zinc-600 text-sm leading-relaxed">{service.description}</p>
+            <a href="/services" class="inline-flex items-center gap-2 text-gold mt-4 font-semibold text-sm group-hover:gap-3 transition-all">
               Learn More 
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -101,14 +101,14 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
   </section>
 
   <!-- Featured Projects -->
-  <section class="py-16 sm:py-24 bg-stone-50">
+  <section class="py-16 sm:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex flex-col sm:flex-row justify-between items-end mb-10 sm:mb-16 gap-4">
         <div>
-          <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">Portfolio</p>
-          <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary">Featured Projects</h2>
+          <p class="text-gold font-medium tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4 uppercase">Portfolio</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">Featured Projects</h2>
         </div>
-        <a href="/portfolio" class="hidden sm:inline-flex items-center gap-2 text-primary font-medium hover:text-gold transition-colors">
+        <a href="/portfolio" class="hidden sm:inline-flex items-center gap-2 text-primary font-semibold hover:text-gold transition-colors">
           View All Projects
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -119,21 +119,21 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {projects.map((project) => (
           <a href="/portfolio" class="group block cursor-pointer">
-            <div class="relative overflow-hidden aspect-[4/3] rounded-2xl mb-4">
+            <div class="relative overflow-hidden aspect-[4/3] rounded-2xl mb-4 shadow-md group-hover:shadow-xl transition-shadow duration-300">
               <img 
                 src={project.image} 
                 alt={project.title}
                 width={800}
                 height={600}
                 loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
-                <span class="text-white font-medium border border-white px-5 py-2 rounded-lg">View Project</span>
+              <div class="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
+                <span class="text-white font-semibold border-2 border-white px-5 py-2.5 rounded-xl">View Project</span>
               </div>
             </div>
-            <p class="text-gold text-xs sm:text-sm uppercase tracking-wide mb-1">{project.category}</p>
-            <h3 class="font-heading text-lg sm:text-xl font-semibold text-primary">{project.title}</h3>
+            <p class="text-gold text-xs sm:text-sm font-medium tracking-wide mb-1">{project.category}</p>
+            <h3 class="text-lg sm:text-xl font-semibold text-primary">{project.title}</h3>
           </a>
         ))}
       </div>
@@ -150,7 +150,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
   </section>
 
   <!-- About Preview -->
-  <section class="py-16 sm:py-24 bg-white">
+  <section class="py-16 sm:py-24 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
         <div class="relative order-2 lg:order-1">
@@ -160,38 +160,38 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
             width={800}
             height={600}
             loading="lazy"
-            class="w-full"
+            class="w-full rounded-2xl shadow-lg"
           />
-          <div class="absolute -bottom-4 sm:-bottom-8 -right-4 sm:-right-8 bg-primary text-white p-6 sm:p-8 hidden lg:block">
-            <p class="font-heading text-4xl sm:text-5xl font-bold">10+</p>
-            <p class="text-stone-400 text-sm">Years of Excellence</p>
+          <div class="absolute -bottom-4 sm:-bottom-8 -right-4 sm:-right-8 bg-primary text-white p-6 sm:p-8 rounded-2xl shadow-xl hidden lg:block">
+            <p class="text-4xl sm:text-5xl font-bold tracking-tight">10+</p>
+            <p class="text-zinc-400 text-sm">Years of Excellence</p>
           </div>
         </div>
         
         <div class="order-1 lg:order-2">
-          <p class="text-gold uppercase tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4">About Us</p>
-          <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">
+          <p class="text-gold font-medium tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4 uppercase">About Us</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">
             Designing Spaces That Tell Your Story
           </h2>
-          <p class="text-stone-600 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+          <p class="text-zinc-600 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
             At Infinity Square LLC, we believe that exceptional interior design goes beyond aesthetics—it's about creating spaces that reflect your unique personality and enhance your lifestyle.
           </p>
-          <p class="text-stone-600 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
+          <p class="text-zinc-600 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
             Our team of talented designers combines creativity with functionality to transform ordinary spaces into extraordinary environments that inspire and delight.
           </p>
           
           <div class="grid grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
-              <p class="font-heading text-3xl sm:text-4xl font-bold text-primary">200+</p>
-              <p class="text-stone-500 text-sm">Projects Completed</p>
+              <p class="text-3xl sm:text-4xl font-bold text-primary tracking-tight">200+</p>
+              <p class="text-zinc-500 text-sm">Projects Completed</p>
             </div>
             <div>
-              <p class="font-heading text-3xl sm:text-4xl font-bold text-primary">50+</p>
-              <p class="text-stone-500 text-sm">Happy Clients</p>
+              <p class="text-3xl sm:text-4xl font-bold text-primary tracking-tight">50+</p>
+              <p class="text-zinc-500 text-sm">Happy Clients</p>
             </div>
           </div>
 
-          <a href="/about" class="inline-flex items-center gap-2 bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 font-medium rounded-lg hover:bg-stone-800 transition-colors">
+          <a href="/about" class="btn-primary">
             Learn More About Us
           </a>
         </div>
@@ -201,20 +201,18 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
 
   <!-- CTA Section -->
   <section class="py-16 sm:py-24 bg-primary relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0" style={`background-image: url('${ctaPatternUrl}')`}></div>
-    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(212,175,55,0.15),transparent)]"></div>
     
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
-      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
         Ready to Transform Your Space?
       </h2>
-      <p class="text-stone-300 text-base sm:text-lg mb-8 sm:mb-10">
+      <p class="text-zinc-400 text-base sm:text-lg mb-8 sm:mb-10">
         Let's create something beautiful together. Contact us today for a consultation.
       </p>
       <a 
         href="/contact" 
-        class="inline-flex items-center gap-2 gold-gradient text-white px-8 sm:px-10 py-3 sm:py-4 font-medium text-base sm:text-lg rounded-lg hover:opacity-90 transition-opacity"
+        class="btn-primary inline-flex items-center gap-2"
       >
         Get In Touch
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
