@@ -2,7 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { categories, projects } from '../data/portfolio';
+import { categories, projects as rawProjects } from '../data/portfolio';
+import { withBase } from '../utils/base';
+
+const projects = rawProjects.map((p) => ({
+  ...p,
+  image: withBase(p.image),
+  images: p.images.map(withBase),
+}));
 ---
 
 <Layout title="Portfolio">
@@ -127,7 +134,7 @@ import { categories, projects } from '../data/portfolio';
         We'd love to hear about your vision and create something extraordinary together.
       </p>
       <a 
-        href="/contact" 
+        href={withBase('/contact')} 
         class="btn-primary inline-flex items-center gap-2"
       >
         Start Your Project
