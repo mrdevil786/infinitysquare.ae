@@ -33,13 +33,13 @@ export const navLinks: NavLink[] = [
 /** Contact details used on Contact page and Footer. */
 export const contactInfo: ContactInfo = {
   address: {
-    studioName: 'Infinity Square LLC',
+    studioName: 'Office 3304, Saeed Tower 1',
     street: 'Sheikh Zayed Road',
     city: 'Dubai, United Arab Emirates',
   },
   emails: ['info@infinityaquare.ae'],
-  phones: ['+971 56 610 0395'],
-  officeHours: 'Sunday - Thursday: 9:00 AM - 7:00 PM\nFriday - Saturday: Closed',
+  phones: ['+971 58 238 0073'],
+  officeHours: 'Monday - Saturday: 8:00 AM - 5:00 PM\nSunday: Closed',
 };
 
 /** Footer service links (anchors on services page). */

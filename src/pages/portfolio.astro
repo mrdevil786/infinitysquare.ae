@@ -51,30 +51,65 @@ import { categories, projects } from '../data/portfolio';
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
           <div 
-            class="project-card group cursor-pointer" 
+            class="project-card group cursor-default select-none active:bg-transparent" 
+            style="-webkit-tap-highlight-color: transparent;"
             data-category={project.category}
+            data-project-id={project.id}
           >
-            <div class={`relative overflow-hidden rounded-2xl ${project.size === 'large' ? 'md:col-span-2 aspect-[16/9]' : 'aspect-[4/3]'}`}>
+            <div class={`relative overflow-hidden rounded-2xl ${project.size === 'large' ? 'aspect-[16/9]' : 'aspect-[4/3]'} bg-zinc-100 shadow-md group-hover:shadow-xl transition-all duration-300`}>
               <img 
                 src={project.image} 
                 alt={project.title}
-                width={project.size === 'large' ? 800 : 800}
-                height={project.size === 'large' ? 450 : 600}
+                width={800}
+                height={600}
                 loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="carousel-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none select-none"
+                data-images={JSON.stringify(project.images)}
+                data-current-index="0"
               />
-              <div class="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
-                <div class="text-center text-white p-6">
-                  <span class="text-gold text-sm font-medium">{project.category}</span>
-                  <h3 class="text-2xl font-semibold mt-2">{project.title}</h3>
-                  <p class="text-zinc-300 text-sm mt-1">{project.location}</p>
-                </div>
-              </div>
+
+              {project.images && project.images.length > 1 && (
+                <>
+                  <!-- Carousel Left Arrow -->
+                  <button
+                    type="button"
+                    class="carousel-prev absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-gold text-white flex items-center justify-center backdrop-blur-md opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 shadow-md hover:scale-110 cursor-pointer focus:outline-none"
+                    aria-label="Previous image"
+                  >
+                    <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                  </button>
+
+                  <!-- Carousel Right Arrow -->
+                  <button
+                    type="button"
+                    class="carousel-next absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-gold text-white flex items-center justify-center backdrop-blur-md opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 shadow-md hover:scale-110 cursor-pointer focus:outline-none"
+                    aria-label="Next image"
+                  >
+                    <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+
+                  <!-- Image Badge / Counter -->
+                  <div class="carousel-counter absolute bottom-3 right-3 bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/20 z-10 pointer-events-none">
+                    1 / {project.images.length}
+                  </div>
+                </>
+              )}
             </div>
-            <div class="mt-4">
-              <span class="text-gold text-sm font-medium">{project.category}</span>
-              <h3 class="text-xl font-semibold text-primary mt-1">{project.title}</h3>
-              <p class="text-zinc-500 text-sm">{project.location}</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <span class="text-gold text-xs font-semibold uppercase tracking-wider">{project.category}</span>
+                <h3 class="text-xl font-bold text-primary mt-0.5">{project.title}</h3>
+                <p class="text-zinc-500 text-sm">{project.location}</p>
+              </div>
+              {project.images && project.images.length > 1 && (
+                <span class="text-xs font-medium text-zinc-400 bg-zinc-100 px-2.5 py-1 rounded-md">
+                  {project.images.length} Photos
+                </span>
+              )}
             </div>
           </div>
         ))}
@@ -108,32 +143,81 @@ import { categories, projects } from '../data/portfolio';
 </Layout>
 
 <script>
-  const buttons = document.querySelectorAll('[data-category]');
-  const cards = document.querySelectorAll('.project-card');
+  document.addEventListener('DOMContentLoaded', () => {
+    // Filter logic
+    const buttons = document.querySelectorAll('[data-category]');
+    const cards = document.querySelectorAll('.project-card');
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const category = btn.getAttribute('data-category');
-      
-      // Update active button and aria-pressed
-      buttons.forEach((b) => {
-        b.classList.remove('bg-primary', 'text-white', 'shadow-sm');
-        b.classList.add('bg-zinc-100', 'text-zinc-600');
-        b.setAttribute('aria-pressed', 'false');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+        
+        buttons.forEach((b) => {
+          b.classList.remove('bg-primary', 'text-white', 'shadow-sm');
+          b.classList.add('bg-zinc-100', 'text-zinc-600');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.remove('bg-zinc-100', 'text-zinc-600');
+        btn.classList.add('bg-primary', 'text-white', 'shadow-sm');
+        btn.setAttribute('aria-pressed', 'true');
+        
+        cards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (category === 'All' || cardCategory === category) {
+            (card as HTMLElement).style.display = 'block';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
       });
-      btn.classList.remove('bg-zinc-100', 'text-zinc-600');
-      btn.classList.add('bg-primary', 'text-white', 'shadow-sm');
-      btn.setAttribute('aria-pressed', 'true');
-      
-      // Filter cards
-      cards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        if (category === 'All' || cardCategory === category) {
-          (card as HTMLElement).style.display = 'block';
-        } else {
-          (card as HTMLElement).style.display = 'none';
+    });
+
+    // Carousel arrows logic
+    cards.forEach((card) => {
+      const img = card.querySelector('.carousel-img') as HTMLImageElement | null;
+      const prevBtn = card.querySelector('.carousel-prev');
+      const nextBtn = card.querySelector('.carousel-next');
+      const counter = card.querySelector('.carousel-counter');
+
+      if (!img) return;
+
+      let images: string[] = [];
+      try {
+        images = JSON.parse(img.getAttribute('data-images') || '[]');
+      } catch (e) {
+        images = [];
+      }
+
+      if (images.length <= 1) return;
+
+      let currentIndex = 0;
+
+      function updateImage(newIndex: number) {
+        currentIndex = (newIndex + images.length) % images.length;
+        if (img) {
+          img.src = images[currentIndex];
+          img.setAttribute('data-current-index', currentIndex.toString());
         }
-      });
+        if (counter) {
+          counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          updateImage(currentIndex - 1);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          updateImage(currentIndex + 1);
+        });
+      }
     });
   });
 </script>

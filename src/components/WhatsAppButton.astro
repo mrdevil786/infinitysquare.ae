@@ -1,0 +1,40 @@
+---
+import { contactInfo } from '../data/site';
+
+const rawPhone = contactInfo.phones[0] || '+971582380073';
+const whatsappNumber = rawPhone.replace(/[^\d]/g, '');
+const defaultMessage = encodeURIComponent('Hello Infinity Square, I would like to inquire about your services.');
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
+---
+
+<a
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="fixed bottom-6 left-6 z-50 group flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white p-3.5 sm:p-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-emerald-400/50"
+  aria-label="Chat with us on WhatsApp"
+>
+  <!-- Online status pulse indicator -->
+  <span class="relative flex h-3 w-3">
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+    <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+  </span>
+
+  <!-- Official WhatsApp Icon -->
+  <svg
+    class="w-6 h-6 sm:w-7 sm:h-7 fill-current transition-transform duration-300 group-hover:rotate-12"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      d="M.5 12C.5 5.649 5.649.5 12 .5s11.5 5.149 11.5 11.5c0 2.215-.624 4.385-1.807 6.273L23.2 23.2l-5.067-1.488A11.455 11.455 0 0112 23.5C5.649 23.5.5 18.351.5 12zm7.042-4.088c-.282-.627-.577-.639-.846-.65-.22-.009-.472-.009-.723-.009-.251 0-.66.094-1.005.471-.345.377-1.319 1.288-1.319 3.143 0 1.854 1.35 3.645 1.538 3.897.189.251 2.601 4.103 6.402 5.603 3.153 1.244 3.794.996 4.485.933.691-.063 2.228-.91 2.542-1.789.314-.879.314-1.632.22-1.789-.094-.157-.345-.251-.723-.44-.377-.188-2.228-1.099-2.573-1.224-.345-.125-.597-.188-.847.189-.251.376-.973 1.224-1.192 1.475-.22.251-.44.282-.817.094-.377-.188-1.593-.587-3.034-1.872-1.123-1.002-1.881-2.24-2.101-2.617-.22-.377-.023-.58.165-.767.169-.169.377-.44.565-.66.188-.22.251-.377.377-.628.125-.251.063-.471-.031-.66-.094-.188-.816-2.021-1.146-2.753z"
+    />
+  </svg>
+
+  <!-- Tooltip text on hover -->
+  <span
+    class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-sm font-bold tracking-wide pr-1 hidden sm:inline-block"
+  >
+    Chat on WhatsApp
+  </span>
+</a>
