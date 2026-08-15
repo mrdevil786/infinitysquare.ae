@@ -50,7 +50,7 @@ export const mainServices: MainServiceCategory[] = [
       'Hazardous Material Handling & Containment',
       'Site Cleanup & Pre-Construction Prep',
     ],
-    image: '/images/Villa Demolition/IMG_8881.JPG',
+    image: '/images/villa-demolition/img-8881.jpg',
   },
   {
     id: 'interior-design',
@@ -116,7 +116,7 @@ export const servicesData: ServiceEntry[] = [
       'Hazardous Material Handling & Containment',
       'Site Cleanup & Pre-Construction Prep',
     ],
-    image: '/images/Villa Demolition/IMG_8881.JPG',
+    image: '/images/villa-demolition/img-8881.jpg',
   },
   {
     id: 'residential',
