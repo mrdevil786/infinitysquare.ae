@@ -4,9 +4,6 @@ import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
 
 export default [
   { ignores: ['dist/**', 'node_modules/**', '.astro/**'] },

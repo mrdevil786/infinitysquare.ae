@@ -3,7 +3,14 @@
  * Icons are referenced by key; pages map keys to Lucide components for tree-shaking.
  */
 
-export type ServiceIconKey = 'House' | 'Building2' | 'ShoppingBag' | 'Palette';
+export type ServiceIconKey =
+  | 'House'
+  | 'Building2'
+  | 'ShoppingBag'
+  | 'Palette'
+  | 'Hammer'
+  | 'Layers'
+  | 'Sparkles';
 
 export interface ServiceEntry {
   id: string;
@@ -17,7 +24,100 @@ export interface ServiceEntry {
   image: string;
 }
 
+export interface MainServiceCategory {
+  id: string;
+  iconKey: ServiceIconKey;
+  title: string;
+  shortDescription: string;
+  description: string;
+  features: string[];
+  image: string;
+  /** Child service IDs that are revealed on click, if any. */
+  childServiceIds?: string[];
+}
+
+export const mainServices: MainServiceCategory[] = [
+  {
+    id: 'demolition',
+    iconKey: 'Hammer',
+    title: 'Demolition',
+    shortDescription: 'Controlled, safe, and efficient interior & structural demolition services.',
+    description: 'We offer professional demolition services ensuring safe, precise, and compliant site preparation for residential and commercial transformations.',
+    features: [
+      'Interior Strip-Out & Selective Demolition',
+      'Structural Demolition & Modification',
+      'Debris Removal & Eco-Friendly Disposal',
+      'Hazardous Material Handling & Containment',
+      'Site Cleanup & Pre-Construction Prep',
+    ],
+    image: '/images/Villa Demolition/IMG_8881.JPG',
+  },
+  {
+    id: 'interior-design',
+    iconKey: 'Palette',
+    title: 'Interior Design',
+    shortDescription: 'Bespoke design concepts, space planning, and photo-realistic 3D visualizations.',
+    description: 'Transforming visions into timeless interior environments with cutting-edge 3D renderings and comprehensive design planning.',
+    features: [
+      'Concept Development & Moodboards',
+      'Space Planning & Layout Optimization',
+      '3D Visualization & Realistic Rendering',
+      'Material, Color & Lighting Selection',
+      'Custom Furniture & Finishes Specification',
+    ],
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
+    childServiceIds: ['visualization'],
+  },
+  {
+    id: 'fit-out',
+    iconKey: 'Layers',
+    title: 'Fit Out Work',
+    shortDescription: 'Turnkey fit-out solutions for luxury homes, corporate offices, and retail spaces.',
+    description: 'Complete interior fit-out services delivered to the highest standards of craftsmanship, covering residential, commercial, and retail environments.',
+    features: [
+      'Turnkey Residential Interior Fit-Out',
+      'Commercial Workspace & Corporate Fit-Out',
+      'Retail & Showroom Interior Execution',
+      'Custom Ceiling, Flooring & Partitioning',
+      'MEP Integration & Project Management',
+    ],
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+    childServiceIds: ['residential', 'commercial', 'retail'],
+  },
+  {
+    id: 'mailatere',
+    iconKey: 'Sparkles',
+    title: 'Mailatere',
+    shortDescription: 'Artisanal wall texturing, decorative plastering, and premium custom surface treatments.',
+    description: 'Exclusive Mailatere decorative plaster and specialized wall finishes that add depth, elegance, and tactile luxury to high-end interiors.',
+    features: [
+      'Decorative Wall Plastering & Stucco',
+      'Artisanal Textured Surface Coating',
+      'Custom Metallic & Mineral Finishes',
+      'Feature Wall & Ceiling Microcement',
+      'Protective Sealing & Surface Longevity',
+    ],
+    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80',
+  },
+];
+
 export const servicesData: ServiceEntry[] = [
+  {
+    id: 'demolition',
+    iconKey: 'Hammer',
+    title: 'Demolition Services',
+    shortDescription: 'Controlled, safe, and efficient interior & structural demolition services.',
+    description:
+      'We offer professional demolition services ensuring safe, precise, and compliant site preparation for residential and commercial transformations.',
+    features: [
+      'Interior Strip-Out & Selective Demolition',
+      'Structural Demolition & Modification',
+      'Debris Removal & Eco-Friendly Disposal',
+      'Hazardous Material Handling & Containment',
+      'Site Cleanup & Pre-Construction Prep',
+    ],
+    image: '/images/Villa Demolition/IMG_8881.JPG',
+  },
   {
     id: 'residential',
     iconKey: 'House',
@@ -85,6 +185,22 @@ export const servicesData: ServiceEntry[] = [
       'Lighting Design',
     ],
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
+  },
+  {
+    id: 'mailatere',
+    iconKey: 'Sparkles',
+    title: 'Mailatere Plaster & Finishes',
+    shortDescription: 'Artisanal wall texturing, decorative plastering, and premium custom surface treatments.',
+    description:
+      'Exclusive Mailatere decorative plaster and specialized wall finishes that add depth, elegance, and tactile luxury to high-end interiors.',
+    features: [
+      'Decorative Wall Plastering & Stucco',
+      'Artisanal Textured Surface Coating',
+      'Custom Metallic & Mineral Finishes',
+      'Feature Wall & Ceiling Microcement',
+      'Protective Sealing & Surface Longevity',
+    ],
+    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80',
   },
 ];
 

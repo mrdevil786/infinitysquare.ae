@@ -2,10 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { House, Building2, ShoppingBag, Palette } from '@lucide/astro';
+import { House, Building2, ShoppingBag, Palette, Hammer, Layers, Sparkles } from '@lucide/astro';
 import { servicesData, processSteps } from '../data/services';
 
-const iconMap = { House, Building2, ShoppingBag, Palette } as const;
+const iconMap = { House, Building2, ShoppingBag, Palette, Hammer, Layers, Sparkles } as const;
 const services = servicesData.map((s) => ({ ...s, icon: iconMap[s.iconKey] }));
 ---
 
@@ -94,27 +94,34 @@ const services = servicesData.map((s) => ({ ...s, icon: iconMap[s.iconKey] }));
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-12 sm:py-24 bg-primary">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
-        Ready to Start Your Project?
-      </h2>
-      <p class="text-zinc-400 text-base sm:text-lg mb-8 sm:mb-10">
-        Let's discuss how we can bring your vision to life.
-      </p>
-      <a 
-        href="/contact" 
-        class="btn-primary inline-flex items-center gap-2"
-      >
-        Get In Touch
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-    </div>
-  </section>
+<!-- CTA -->
+<section class="py-12 sm:py-24 bg-primary relative overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(212,175,55,0.15),transparent)]"></div>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
+      Ready to Transform Your Space?
+    </h2>
 
+    <p class="text-zinc-400 text-base sm:text-lg mb-8 sm:mb-10">
+      Let's discuss how we can bring your vision to life.
+    </p>
+
+    <a 
+      href="/contact" 
+      class="btn-primary inline-flex items-center gap-2"
+    >
+      Get In Touch
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          stroke-width="2" 
+          d="M17 8l4 4m0 0l-4 4m4-4H3" 
+        />
+      </svg>
+    </a>
+  </div>
+</section>
   </main>
   <Footer />
 </Layout>
