@@ -334,7 +334,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
         let images: string[] = [];
         try {
           images = JSON.parse(img.getAttribute('data-images') || '[]');
-        } catch (e) {
+        } catch {
           images = [];
         }
 

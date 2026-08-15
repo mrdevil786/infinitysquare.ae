@@ -184,7 +184,7 @@ import { categories, projects } from '../data/portfolio';
       let images: string[] = [];
       try {
         images = JSON.parse(img.getAttribute('data-images') || '[]');
-      } catch (e) {
+      } catch {
         images = [];
       }
 
