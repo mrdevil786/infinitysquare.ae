@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { House, Building2, ShoppingBag, Palette, Hammer, Layers, Sparkles, X, CheckCircle2 } from '@lucide/astro';
+import { House, Building2, ShoppingBag, Palette, Hammer, Layers, Sparkles, CheckCircle } from '@lucide/astro';
 import { mainServices, servicesData } from '../data/services';
 import { projects as allProjects, featuredProjectsCount } from '../data/portfolio';
 
@@ -159,7 +159,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
                     <ul class="space-y-2 mb-4">
                       {subServicesMap['visualization']?.features.map((feat) => (
                         <li class="flex items-center gap-2 text-xs sm:text-sm text-zinc-700">
-                          <CheckCircle2 class="w-4 h-4 text-gold flex-shrink-0" />
+                          <CheckCircle class="w-4 h-4 text-gold flex-shrink-0" />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -251,7 +251,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
                   <ul class="space-y-2.5 mb-6">
                     {service.features.map((feat) => (
                       <li class="flex items-center gap-3 text-sm text-zinc-700">
-                        <CheckCircle2 class="w-5 h-5 text-gold flex-shrink-0" />
+                        <CheckCircle class="w-5 h-5 text-gold flex-shrink-0" />
                         <span>{feat}</span>
                       </li>
                     ))}
