@@ -2,22 +2,28 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { House, Building2, ShoppingBag, Palette, Hammer, Layers, Sparkles, CheckCircle } from '@lucide/astro';
+import { House, Building2, ShoppingBag, Palette, Hammer, Layers, Sparkles, CircleCheck } from '@lucide/astro';
 import { mainServices, servicesData } from '../data/services';
 import { projects as allProjects, featuredProjectsCount } from '../data/portfolio';
+import { withBase } from '../utils/base';
 
 const iconMap = { House, Building2, ShoppingBag, Palette, Hammer, Layers, Sparkles } as const;
 
 const services = mainServices.map((s) => ({
   ...s,
   icon: iconMap[s.iconKey],
+  image: withBase(s.image),
 }));
 
 const subServicesMap = Object.fromEntries(
-  servicesData.map((s) => [s.id, { ...s, icon: iconMap[s.iconKey] }])
+  servicesData.map((s) => [s.id, { ...s, icon: iconMap[s.iconKey], image: withBase(s.image) }])
 );
 
-const projects = allProjects.slice(0, featuredProjectsCount);
+const projects = allProjects.slice(0, featuredProjectsCount).map((p) => ({
+  ...p,
+  image: withBase(p.image),
+  images: p.images.map(withBase),
+}));
 
 const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80';
 ---
@@ -48,7 +54,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
       </p>
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
         <a 
-          href="/contact" 
+          href={withBase('/contact')} 
           class="btn-secondary"
         >
           Start Your Project
@@ -58,8 +64,8 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
 
     <!-- Scroll Indicator -->
     <a href="#our-services" class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/60 hover:text-white transition-colors" aria-label="Scroll to services">
-      <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7-7-7m14-8l-7 7-7-7" />
       </svg>
     </a>
   </section>
@@ -145,7 +151,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
 
                 <!-- 3D Visualization Service Highlight Card (Clickable to /services#visualization) -->
                 <a
-                  href="/services#visualization"
+                  href={withBase('/services#visualization')}
                   class="group/sub bg-zinc-50 rounded-2xl p-6 sm:p-8 border border-zinc-200/80 grid grid-cols-1 md:grid-cols-2 gap-6 items-center block hover:border-gold/50 hover:bg-white hover:shadow-lg transition-all duration-300"
                 >
                   <div>
@@ -159,7 +165,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
                     <ul class="space-y-2 mb-4">
                       {subServicesMap['visualization']?.features.map((feat) => (
                         <li class="flex items-center gap-2 text-xs sm:text-sm text-zinc-700">
-                          <CheckCircle class="w-4 h-4 text-gold flex-shrink-0" />
+                          <CircleCheck class="w-4 h-4 text-gold flex-shrink-0" />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -204,7 +210,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
                     if (!child) return null;
                     return (
                       <a
-                        href={`/services#${childId}`}
+                        href={withBase(`/services#${childId}`)}
                         class="group/sub bg-zinc-50 p-5 rounded-2xl border border-zinc-200/80 flex flex-col justify-between hover:border-gold/50 hover:bg-white hover:shadow-md transition-all duration-300 block"
                       >
                         <div>
@@ -251,7 +257,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
                   <ul class="space-y-2.5 mb-6">
                     {service.features.map((feat) => (
                       <li class="flex items-center gap-3 text-sm text-zinc-700">
-                        <CheckCircle class="w-5 h-5 text-gold flex-shrink-0" />
+                        <CircleCheck class="w-5 h-5 text-gold flex-shrink-0" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -268,10 +274,10 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
             <div class="mt-8 pt-6 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4">
               <p class="text-xs text-zinc-500">Need customized solutions for your project?</p>
               <div class="flex items-center gap-3 w-full sm:w-auto">
-                <a href="/contact" class="btn-primary py-2.5 px-5 text-sm w-full sm:w-auto text-center">
+                <a href={withBase('/contact')} class="btn-primary py-2.5 px-5 text-sm w-full sm:w-auto text-center">
                   Get In Touch
                 </a>
-                <a href={`/services#${service.id}`} class="btn-secondary py-2.5 px-5 text-sm w-full sm:w-auto text-center border-zinc-300 text-zinc-800 hover:bg-zinc-100">
+                <a href={withBase(`/services#${service.id}`)} class="btn-secondary py-2.5 px-5 text-sm w-full sm:w-auto text-center border-zinc-300 text-zinc-800 hover:bg-zinc-100">
                   View on Services Page
                 </a>
               </div>
@@ -380,7 +386,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
           <p class="text-gold font-medium tracking-[0.2em] text-xs sm:text-sm mb-3 sm:mb-4 uppercase">Portfolio</p>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary">Featured Projects</h2>
         </div>
-        <a href="/portfolio" class="hidden sm:inline-flex items-center gap-2 text-primary font-semibold hover:text-gold transition-colors">
+        <a href={withBase('/portfolio')} class="hidden sm:inline-flex items-center gap-2 text-primary font-semibold hover:text-gold transition-colors">
           View All Projects
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -454,7 +460,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
       </div>
 
       <div class="text-center mt-10 sm:hidden">
-        <a href="/portfolio" class="inline-flex items-center gap-2 text-primary font-medium hover:text-gold transition-colors">
+        <a href={withBase('/portfolio')} class="inline-flex items-center gap-2 text-primary font-medium hover:text-gold transition-colors">
           View All Projects
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -506,7 +512,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
             </div>
           </div>
 
-          <a href="/about" class="btn-primary">
+          <a href={withBase('/about')} class="btn-primary">
             Learn More About Us
           </a>
         </div>
@@ -526,7 +532,7 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
         Let's create something beautiful together. Contact us today for a consultation.
       </p>
       <a 
-        href="/contact" 
+        href={withBase('/contact')} 
         class="btn-primary inline-flex items-center gap-2"
       >
         Get In Touch
@@ -540,4 +546,3 @@ const heroImageUrl = 'https://images.unsplash.com/photo-1618221195710-dd6b41faae
   </main>
   <Footer />
 </Layout>
-
