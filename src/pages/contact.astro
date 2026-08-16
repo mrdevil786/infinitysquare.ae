@@ -167,7 +167,7 @@ const showError = searchParams.get('error') === '1';
                 } else {
                   throw new Error('Submission failed');
                 }
-              } catch (err) {
+              } catch {
                 const formData = new FormData(form);
                 const name = String(formData.get('name') || '');
                 const email = String(formData.get('email') || '');
