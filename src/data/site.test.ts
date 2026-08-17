@@ -4,6 +4,7 @@ import {
   contactInfo,
   footerServices,
   footerCompany,
+  socialLinks,
   getFooterContactEntries,
 } from './site';
 
@@ -36,6 +37,13 @@ describe('site data', () => {
   it('footerServices and footerCompany have name and href', () => {
     expect(footerServices.every((l) => l.name && l.href)).toBe(true);
     expect(footerCompany.every((l) => l.name && l.href)).toBe(true);
+  });
+
+  it('exports socialLinks with valid names and links', () => {
+    expect(socialLinks).toHaveLength(3);
+    expect(socialLinks.every((l) => l.name && l.href && l.icon)).toBe(true);
+    expect(socialLinks.find((l) => l.name === 'Instagram')?.href).toContain('instagram.com');
+    expect(socialLinks.find((l) => l.name === 'LinkedIn')?.href).toContain('linkedin.com');
   });
 
   it('getFooterContactEntries returns label/value pairs', () => {

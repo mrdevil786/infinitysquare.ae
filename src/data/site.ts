@@ -57,6 +57,31 @@ export const footerCompany: NavLink[] = [
   { name: 'Contact', href: '/contact' },
 ];
 
+export interface SocialLink {
+  name: string;
+  href: string;
+  icon: 'facebook' | 'instagram' | 'linkedin';
+}
+
+/** Social media links. */
+export const socialLinks: SocialLink[] = [
+  {
+    name: 'Facebook',
+    href: '#',
+    icon: 'facebook',
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/infinitysquarellc?igsh=bnN6MDU5N28wMmlz&utm_source=qr',
+    icon: 'instagram',
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/infinity-square/',
+    icon: 'linkedin',
+  },
+];
+
 /** Footer contact section as label/value pairs (derived from contactInfo). */
 export function getFooterContactEntries(): { label: string; value: string }[] {
   const { address, emails, phones } = contactInfo;
